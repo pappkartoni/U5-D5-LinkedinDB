@@ -26,11 +26,11 @@ postsRouter.get("/", async (req, res, next) => {
     }
 })
 
-postsRouter.get("/by/:userId", async (req, res, next) => {
+postsRouter.get("/by/:postId", async (req, res, next) => {
     try {
         const posts = await PostsModel.findAll({
             attributes: ['text', 'image'],
-            where: {user_id: req.params.userId}
+            where: {posts_id: req.params.postId}
         })
         res.send(posts)
     } catch (error) {
