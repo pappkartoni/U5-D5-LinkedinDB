@@ -16,25 +16,6 @@ usersRouter.post("/", async (req, res, next) => {
 
 usersRouter.get("/", async (req, res, next) => {
     try {
-/*         const query = {}
-
-        if (req.query.min && req.query.max) query.price = {[Op.between]: [req.query.min, req.query.max]}
-        if (req.query.cat) query.category = {[Op.iLike]: `%${req.query.cat}%`}
-        const users = await UsersModel.findAndCountAll({
-            where: {
-                ...query,
-                ...(req.query.search && {[Op.or]: [{name: {[Op.iLike]: `%${req.query.search}%`}}, {description: {[Op.iLike]: `%${req.query.search}%`}}]})
-            },
-            include: [
-                {model: CategoriesModel, attributes: ["name"], through: {attributes: []}},
-                {model: ReviewsModel, attributes: ["userId", "content"], 
-                    include: {model: UsersModel, attributes: ["firstname", "lastname"]}
-                }
-            ],
-            ...(req.query.limit && {limit: req.query.limit}), // unnecessarily complicated, i don't think limit: null breaks anything
-            ...(req.query.offset && {offset: req.query.offset}),
-            order: [(req.query.orderby ? [req.query.orderby, (req.query.dir ? req.query.dir.toUpperCase() : "ASC")] : ["userId", (req.query.dir ? req.query.dir.toUpperCase() : "ASC")])]
-        }) */
         const users = await UsersModel.findAll({
             attributes: ['name', 'surname']
         })
